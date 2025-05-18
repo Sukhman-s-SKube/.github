@@ -48,6 +48,8 @@ Nothing will be port forwarded because A) I'm no security engineer and B) I don'
 | [Kubeadm](https://kubernetes.io/docs/reference/setup-tools/kubeadm/)  | v1.33  | Kubernetes service  |
 | [Kubectl](https://kubernetes.io/docs/reference/kubectl/)  | v1.29.15-1.1  | Kubernetes command line tool  |
 | [Kubelet](https://kubernetes.io/docs/reference/command-line-tools-reference/kubelet/#:~:text=The%20kubelet%20is%20the%20primary,object%20that%20describes%20a%20pod.) | v1.29.15-1.1  | Kubernetes node agent  |
+| [Local path provisioner](https://github.com/rancher/local-path-provisioner)  | v0.0.31  | Used for provisioning PVCs for deployments |
+| [Metrics Server](https://github.com/kubernetes-sigs/metrics-server)   | v0.7.2  | Scrapes pod and node metrics |
 | [Containerd](https://containerd.io/)  | v2.1  | Container runtime for cluster  |
 | [Flannel](https://github.com/flannel-io/flannel)  | v0.26.7  | CNI for cluster |
 | [MetalLB](https://github.com/flannel-io/flannel)  | v0.14.9 | Load balancer for cluster|
