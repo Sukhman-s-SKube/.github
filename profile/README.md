@@ -3,6 +3,7 @@
 ## Table of Contents
 1. [Overview](#overview)
 2. [Objectives](#objectives)
+   - [Completed](#completed-objectives)
    - [Current](#current-objectives)
    - [Out there](#out-there-objectives)
 3. [Hardware](#hardware)
@@ -14,23 +15,31 @@ This organization's purpose is to serve as a place where I can add repositories 
 
 ## Objectives
 
-### Current Objectives
-- Stay Consistent With Documentation
+### Completed Objectives
 - Set Up Kubernetes
 - Install MetalLB for Load Balancing
 - Set Up Metrics API
 - Set Up Kubernetes Dashboard
+- Set up Bitnami sealed secrets
 - Set Up TailScale
-- Set Up MiniIO
 - Set Up a Self-Hosted Github Actions Runner
+- Set up Harbor as a container registry to pull images for deployments
+- Central cluster Postgres and MongoDB instances with PVCs (persistent volume claims)
+- Deploy Hobb.Y on the cluster by pushing to harbor to test the feasibility of the pipeline
+
+
+
+### Current Objectives
+- Stay Consistent With Documentation
+- Automate a CI/CD pipeline using Github Actions
+- Set Up MiniIO
 - Start Migrating Side Projects To Cluster
 - Set Up Dagster Instance
 
 ### Out there objectives
-- Set up Cloudflare Tunnels
 - Train a Model
 - Find a Way to Train the Model On My Personal Rig and Then Store it on Mini IO
-- Automate a Dagster Pipeline Which Trains and Deploys an API Which Uses my Model (incorporate Actions pipelines for CI/CD)
+- Automate a Dagster Pipeline that trains and Deploys an API that uses my Model (incorporate Action pipelines for CI/CD)
 
 ## Hardware
 ### Kubernetes Cluster
@@ -40,10 +49,10 @@ The cluster is run on the BOSGAME P4 as mentioned above the reason I've chosen i
 My current rig consists of an i7 13700k and RTX 4080. The justification for the hardware is gaming but it doubles as a powerful setup for training models and other data-intensive tasks, so I will be incorporating it into various data pipelines.
 
 ## Networking
-Nothing will be port forwarded because A) I'm no security engineer and B) I don't want to be hacked so the optimal way to have these projects accessible will be to either keep them private (which will be most projects) and use [Cloudflare tunnels](https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/) (more on this later as I learn how to do this). To access the cluster when I'm away from home I'll be using [TailScale](https://tailscale.com/wireguard-vpn?utm_campaign=PMax-Wireguard-US&utm_medium=paid-search&utm_source=google&utm_content=:21886304591:::c:&gad_source=1&gad_campaignid=21890112415&gbraid=0AAAAACjm7b2K6A24PNlAVr0ZO956aRHvI&gclid=CjwKCAjw56DBBhAkEiwAaFsG-hsuYr8dgWz4sWA1ffMx4Xqs41eSfBCekbELypkUq2gBTxvUs3SMFxoCMKcQAvD_BwE) to protect the cluster. All services will be load balancers which use [MetalLB](https://metallb.io/) since I don't want to use node ports due to safety concerns (obviously unless it's to be used internally in which case I also may use cluster IP). 
+Nothing will be port forwarded because A) I'm no security engineer and B) I don't want to be hacked so the optimal way to have these projects accessible will be to either keep them private (which will be most projects) and ~~use [Cloudflare tunnels](https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/) (more on this later as I learn how to do this)~~ Unfortunately after looking into cloudflare tunnels I've determined that it's just safer to not expose my projects to the internet and would probably be better off making demo videos of my projects and such instead. To access the cluster when I'm away from home I'll be using [TailScale](https://tailscale.com/wireguard-vpn?utm_campaign=PMax-Wireguard-US&utm_medium=paid-search&utm_source=google&utm_content=:21886304591:::c:&gad_source=1&gad_campaignid=21890112415&gbraid=0AAAAACjm7b2K6A24PNlAVr0ZO956aRHvI&gclid=CjwKCAjw56DBBhAkEiwAaFsG-hsuYr8dgWz4sWA1ffMx4Xqs41eSfBCekbELypkUq2gBTxvUs3SMFxoCMKcQAvD_BwE) to protect the cluster. All services will be load balancers which use [MetalLB](https://metallb.io/) since I don't want to use node ports due to safety concerns (obviously unless it's to be used internally in which case I also may use cluster IP). 
 
 ## Software and Tools
-| Software  | Version | Purpose |
+| Software  | Version | Purpose/Comments |
 | ------------- | ------------- | ------------- |
 | [Kubeadm](https://kubernetes.io/docs/reference/setup-tools/kubeadm/)  | v1.33  | Kubernetes service  |
 | [Kubectl](https://kubernetes.io/docs/reference/kubectl/)  | v1.29.15-1.1  | Kubernetes command line tool  |
@@ -53,3 +62,12 @@ Nothing will be port forwarded because A) I'm no security engineer and B) I don'
 | [Containerd](https://containerd.io/)  | v2.1  | Container runtime for cluster  |
 | [Flannel](https://github.com/flannel-io/flannel)  | v0.26.7  | CNI for cluster |
 | [MetalLB](https://github.com/flannel-io/flannel)  | v0.14.9 | Load balancer for cluster|
+| [Kubernetes dashboard](https://github.com/flannel-io/flannel)  | v7.12.0 | A nice dashboard for the cluster, that works with metrics API to provide information |
+| [Bitnami Sealed Secrets](https://github.com/bitnami-labs/sealed-secrets)  | v0.2.9 | Used to seal opaque secrets on the cluster so that using the sealed secret manager they may be decrypted allowing these secrets to be published with no consequence. |
+| [Tailscale](https://tailscale.com/kb/1017/install)  | v1.82.5 | A VPN service which is run on the cluster so I can access it when I'm not on my home network. Also has a nice UI and is very easy to set up |
+| [Github Actions Runner](https://github.com/actions/runner)  | v2.324.0 | A VPN service which is run on the cluster so I can access it when I'm not on my home network. Also has a nice UI and is very easy to set up |
+| [Harbor](https://github.com/goharbor/harbor)  | v2.12.3 | An open-source container registry which is pretty easy to set up and has a nice suite of features. |
+| [MongoDB](https://github.com/bitnami/charts/tree/main/bitnami/mongodb) | v8.0.9 | Bitnami provides nice helm charts to deploy a single instance of MongoDB. Centralized NoSQL DB for all purposes |
+| [Postgres](https://github.com/bitnami/charts/tree/main/.vib/prometheus) | v17.5.0 | Bitnami provides nice helm charts to deploy a single instance of Postgres. Centralized SQL DB for all purposes |
+| [Hobb.Y](https://github.com/sukhmansra64/hobb.Y) | N/A | A project that I initially built 2-3 years ago but I've changed it to be deployed on Kubernetes. Deployed to test the feasibility of deploying an image end to end onto the cluster. |
+
