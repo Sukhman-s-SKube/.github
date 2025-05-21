@@ -1,4 +1,5 @@
 # SKube
+A cheap, easy-to-set-up Kubernetes cluster set up for the sole purpose of learning how to make cool stuff.
 
 ## Table of Contents
 1. [Overview](#overview)
