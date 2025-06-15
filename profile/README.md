@@ -9,7 +9,7 @@ A cheap, easy-to-set-up Kubernetes cluster set up for the sole purpose of learni
    - [Out there](#out-there-objectives)
 3. [Hardware](#hardware)
 4. [Networking](#networking)
-5. [CI/CD](#ci/cd)
+5. [CI/CD](#cicd)
 6. [Software and Tools](#software-and-tools)
 
 ## Overview
