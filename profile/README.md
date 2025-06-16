@@ -77,4 +77,5 @@ I wanted to build a CI/CD pipeline which automated the process of development fr
 | [Postgres](https://github.com/bitnami/charts/tree/main/.vib/prometheus) | v17.5.0 | Bitnami provides nice helm charts to deploy a single instance of Postgres. Centralized SQL DB for all purposes |
 | [build-deploy](https://github.com/Sukhman-s-SKube/gh-actions) | N/A | An end-to-end ci/cd pipeline written for my self-hosted Github actions runner. Built to be a reusable workflow to make development faster, and make it easier to deploy my projects. |
 | [Hobb.Y](https://github.com/Sukhman-s-SKube/hobb.Y) | N/A | A project that I initially built 2-3 years ago but I've changed it to be deployed on Kubernetes. Deployed to test the feasibility of deploying an image end-to-end onto the cluster. After checking the feasibility, I have now deployed it using my actions pipeline to allow for it to be deployed end-to-end throughout development.|
+| [Minio](https://bitnami.com/stacks/minio) | 2025.5.24 | A simple Object storage which is fairly similar to AWS S3 but is opensource. I needed something to use for data staging/dumping so this was the best option for that. |
 
