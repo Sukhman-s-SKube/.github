@@ -29,12 +29,12 @@ This organization's purpose is to serve as a place where I can add repositories 
 - Central cluster Postgres and MongoDB instances with PVCs (persistent volume claims)
 - Deploy Hobb.Y on the cluster by pushing to harbor to test the feasibility of the pipeline
 - Automate a CI/CD pipeline using Github Actions
+- Set Up MiniIO
 
 
 
 ### Current Objectives
 - Stay Consistent With Documentation
-- Set Up MiniIO
 - Start Migrating Side Projects To Cluster
 - Set Up Dagster Instance
 
