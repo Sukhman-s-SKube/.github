@@ -31,17 +31,20 @@ This organization's purpose is to serve as a place where I can add repositories 
 - Automate a CI/CD pipeline using Github Actions
 - Set Up MiniIO
 - Start Migrating Side Projects To Cluster
+- Set Up Dagster Instance
+- Train a Model
+- Find a Way to Train the Model on My Personal Rig and Then Store it on Mini IO
 
 
 
 ### Current Objectives
 - Stay Consistent With Documentation
-- Set Up Dagster Instance
+- Automate a Dagster Pipeline that trains and deploys an API that uses my Model (incorporate Action pipelines for CI/CD)
+
 
 ### Out there objectives
-- Train a Model
-- Find a Way to Train the Model On My Personal Rig and Then Store it on Mini IO
-- Automate a Dagster Pipeline that trains and Deploys an API that uses my Model (incorporate Action pipelines for CI/CD)
+- Build a full stack app around the model and make demos for the SKube platform.
+
 
 ## Hardware
 ### Kubernetes Cluster
